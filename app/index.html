@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ice Cream Menu</title>
+
+	<!-- Bootstrap CSS CDN-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- My CSS file -->
+	<link rel="stylesheet" href="style.css">
+
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great|Lobster|Sacramento" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Homemade+Apple" rel="stylesheet">
+
+	<!--JQuery-->
+	<script
+	  src="https://code.jquery.com/jquery-3.2.1.min.js"
+	  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+	  crossorigin="anonymous"></script>
+ 
+	<!--Bootstrap JS CDN-->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+</head>
+<body class="container">
+	<div id="menuBoard">
+		<h1>Ice Cream Menu</h1>
+
+		<div id ="orderPanel">
+		<h3>Your Order:</h3>
+			<ul id="orderList">
+			</ul>
+		<h3>Total: $<span id="orderPrice">0</span></h3>
+		</div>
+
+		<div id = "subMenus">
+			
+			<div class ="dropdownFlavors">
+				<div class="row">
+					<div class="col-xs-12">
+						<button class ="btn btn-primary menuButton regular"><h2><span class="frontBracket">{</span>Regular Flavors<span class="backBracket">}</span></h2></button>
+					</div>
+				</div>
+				<div class ="row">
+					<div class = "col-xs-12 printOutOptions" id="printOutOptions1">
+						<table>
+							<tr id = "optionName1"></tr>
+							<tr id = "optionDescription1"></tr>
+							<tr id = "optionPrice1"></tr>
+						</table>
+					</div>
+				</div>
+			</div>
+			
+			<div class = "dropdownFlavors">
+				<div class="row">
+					<div class="col-xs-12">
+						<button class ="btn btn-primary menuButton seasonal"><h2><span class="frontBracket">{</span>Seasonal Flavors<span class="backBracket">}</span></h2></button>
+					</div>
+				</div>
+				<div class="row">
+					<div class = "col-xs-12 printOutOptions" id="printOutOptions2">
+						<table>
+							<tr id = "optionName2"></tr>
+							<tr id = "optionDescription2"></tr>
+							<tr id = "optionPrice2"></tr>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<div class = "dropdownFlavors">
+				<div class="row">
+					<div class="col-xs-12">
+						<button class ="btn btn-primary menuButton toppings"><h2><span class="frontBracket">{</span>Toppings<span class="backBracket">}</span></h2></button>
+					</div>
+				</div>
+				<div class="row">
+					<div class = "col-xs-12 printOutOptions" id="printOutOptions3">
+						<table>
+							<tr id = "optionName3"></tr>
+							<tr id = "optionDescription3"></tr>
+							<tr id = "optionPrice3"></tr>
+						</table>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="dropdownFlavors">
+				<div class="row">
+					<div class = "col-xs-12">
+						<button class ="btn btn-primary menuButton serving"><h2><span class="frontBracket">{</span>Serving Options<span class="backBracket">}</span></h2></button>
+					</div>
+				</div>
+				<div class="row">
+					<div class = "col-xs-12 printOutOptions" id="printOutOptions4">
+							<table>
+							<tr id = "optionName4"></tr>
+							<tr id = "optionDescription4"></tr>
+							<tr id = "optionPrice4"></tr>
+						</table>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+<script src = "main.js"></script>
+</body>
+</html>

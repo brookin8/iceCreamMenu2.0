@@ -1,0 +1,150 @@
+
+/* Google Fonts: 
+font-family: 'Sacramento', cursive;
+font-family: 'Lobster', cursive;
+font-family: 'Fredericka the Great', cursive;
+*/
+
+
+body {
+
+background-image: url("blackboard.jpg");
+background-repeat: no-repeat;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+/*background-color:#404040;
+background: linear-gradient(to bottom right, #808080, #404040); /* Standard syntax */
+}
+
+
+
+h1 {
+	text-align: center;
+	padding-top: 3%;
+	font-size:500%;
+	font-style:cursive;
+	padding-bottom:3%;
+	color:#ffffff;
+	font-family: 'Fredericka the Great', cursive;
+}
+
+#menuBoard {
+	width:90%;
+	margin-left:5%;
+	margin-right:5%;
+}
+
+#subMenus {
+	padding-left:auto;
+	padding-right:auto;
+	text-align:center;
+}
+
+.btn {
+	padding-bottom:2%;
+	padding-top:2%;
+	width:100%;
+	margin-bottom:2%;
+	font-family: 'Sacramento', cursive;
+	background-color:transparent;
+	border:none;
+
+}
+
+
+h2 {
+	font-size:400%;
+}
+
+.frontBracket {
+	padding-left:0%;
+	padding-right:10%;
+}
+.backBracket {
+	padding-left:10%;
+	padding-right:0%;
+}
+
+#printOutOptions1 {
+	display:none;
+}
+
+#printOutOptions2 {
+	display:none;
+}
+
+#printOutOptions3 {
+	display:none;
+}
+
+#printOutOptions4 {
+	display:none;
+}
+
+.printOutOptions {
+	padding-top:2%;
+	padding-bottom:3%;
+}
+
+table {
+	width:90%;
+	margin-left:5%;
+	margin-right:5%;
+	color:#ffffff;
+}
+
+th {
+	text-align:center;
+	padding:3%;
+	font-size:200%;
+}
+
+td {
+	text-align:center;
+	padding:3%;
+	font-size:130%;
+}
+
+#orderPanel {
+	display:block;
+	width:70%;
+	height:60%;
+	background-color:transparent;
+	margin-left:15%;
+	margin-right:15%;
+	margin-bottom:4%;
+	padding-top:.5%;
+	padding-left:3%;
+	padding-right:3%;
+	padding-bottom:2%;
+	border-color:#ffffff;
+	border-width:3px;
+	border-style:solid;
+	color:#ffffff;
+
+}
+
+.removeFromCart {
+	margin-left: 6%;
+	background-color:transparent;
+	border-style:solid;
+	height:15%;
+}
+
+.orderListItem {
+	font-size:135%;
+}
+
+.addToCart {
+	background-color:transparent;
+	border-style:solid;
+
+}
+
+
+
+
+
+

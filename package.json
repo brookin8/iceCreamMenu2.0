@@ -1,0 +1,17 @@
+{
+  "name": "icecreammenu2",
+  "version": "1.0.0",
+  "description": "An application that renders a menu board for an ice cream shop using",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.0"
+  }
+}
