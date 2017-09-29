@@ -1,3 +1,5 @@
+//Declaring variables
+
 var products = {
   
   "Regular Flavors": [
@@ -79,18 +81,18 @@ var orderPanel = document.getElementById('orderPanel');
 var orderList = document.getElementById('orderList');
 var orderPrice = document.getElementById('orderPrice');
 
-var firstIndex;
-var productToCheck;
 
+//Function to check that page is loaded
 document.onreadystatechange = function() { //boilerplate
   if (document.readyState == "interactive") { //boilerplate
     reset(); //Resets everything to start fresh
-    for (i = 0; i < menuButtons.length; i++) { //Grabbing each digit button in the numeric class
-      menuButtons[i].addEventListener("click", ButtonLogic); //When a digit button is clicked, we run the ButtonLogic function
+    for (i = 0; i < menuButtons.length; i++) { //Grabbing each menu button
+      menuButtons[i].addEventListener("click", ButtonLogic); //When a menu button is clicked, we run the ButtonLogic function
     }
   }
 }
 
+//Function to reset the page
 function reset() {
 
   printOutOptions1.style.display = 'none';
@@ -103,6 +105,7 @@ function reset() {
   orderPrice.innerHTML = '';
 }
 
+//Function that checks which menu section is selected for dropdown and further functions
 function ButtonLogic() {
   if(this.classList.contains('regular')) {
     regular(); 
@@ -115,35 +118,47 @@ function ButtonLogic() {
   }
 }
 
+//Function that displays all Regular Flavors and adds functionality for cart
+//seasonal, toppings, and serving functions will all work the same as regular function 
 function regular() {
 
-if(!regularClick) {   
+if(!regularClick) {   //If this menu section is not currently displayed
 
-    firstIndex = "Regular Flavors";
-
-    printOutOptions1.style.display = 'block';
-   // optionName1.innerHTML = products["Regular Flavors"][0]["name"];
-    var names = '';
+    printOutOptions1.style.display = 'block'; //Display the currently hidden section
+    
+    //Blank variables to store the results of the following for loop in
+    var names = ''; 
     var descriptions = '';
     var prices = '';
+
+    //This for loop cycles through the Regular Flavors sub-array, and accesses elements according to their keys
+    //If the key is 'name', it pushes the value into the table heading, 
+    //and makes it a button with the class 'addToCart' that can be used to add this product to the cart.
+    //If the key is 'description' or 'price', it pushes the value into a table cell.
     for(var i=0; i<products["Regular Flavors"].length;i++) {
       names += "<th><button class='addToCart'>"  + products["Regular Flavors"][i]["name"] + "</button></th>"
       descriptions += "<td>"  + products["Regular Flavors"][i]["description"] + "</td>"
       prices += "<td>"  + "$" + products["Regular Flavors"][i]["price"] + "</td>"
     }
 
+    //This piece assigns each row to its proper place in the document, according to classes I assigned earlier.
     document.getElementById('optionName1').innerHTML = names;
     document.getElementById('optionDescription1').innerHTML = descriptions;
     document.getElementById('optionPrice1').innerHTML = prices;
 
+    //Then reset regularClick, so that the menu will toggle (display will go back to none when clicked again)
     regularClick = true;
 
+    //Accessing the 'addToCart' buttons I created in the for loop above
     var addToCart = document.getElementsByClassName('addToCart');
 
+    //For each button I created, I loop through and create an eventListener for when they are clicked.
+    //The function that the button will perform when clicked, addCart(), is defined below.
     for (i = 0; i < addToCart.length; i++) { 
       addToCart[i].addEventListener("click", addCart); 
     }
 
+    //If the regularClick was already set to true, the section will hide (toggle)
   } else {
 
     printOutOptions1.style.display = 'none';
@@ -160,7 +175,6 @@ if(!seasonalClick) {
     firstIndex = "Seasonal Flavors";
 
     printOutOptions2.style.display = 'block';
-   // optionName1.innerHTML = products["Regular Flavors"][0]["name"];
     var names = '';
     var descriptions = '';
     var prices = '';
@@ -199,7 +213,6 @@ if(!toppingsClick) {
     firstIndex = "Toppings";
 
     printOutOptions3.style.display = 'block';
-   // optionName1.innerHTML = products["Regular Flavors"][0]["name"];
     var names = '';
     var descriptions = '';
     var prices = '';
@@ -238,7 +251,6 @@ if(!servingClick) {
     firstIndex = "Serving Options";
 
     printOutOptions4.style.display = 'block';
-   // optionName1.innerHTML = products["Regular Flavors"][0]["name"];
     var names = '';
     var descriptions = '';
     var prices = '';
@@ -270,13 +282,19 @@ if(!servingClick) {
 }
 
 function addCart() {
-  
+
+
+  //When you click a product, it automatically starts an order for you.
+  //It unhides an Order Panel display, where it will keep a list and price tally
   orderPanel.style.display = 'block';
 
+  //Setting up variables to calculate a running price total
   var priceToAdd = "0";
-  var totalPrice = orderPrice.innerHTML;
+  var totalPrice = orderPrice.innerHTML; //This grabs the price that is currently displayed
 
-  
+  //I then loop through each inner array of the larger products array to check for 
+  //the name of the product I clicked on. When I find it, I grab the associated price 
+  //and store it in 'priceToAdd'
   for (var i=0;i<products["Regular Flavors"].length;i++) {
     if(products["Regular Flavors"][i]["name"] === this.innerHTML) {
       priceToAdd = products["Regular Flavors"][i]["price"];
@@ -301,33 +319,39 @@ function addCart() {
     }
   }
 
-
-
+  //I then create a list item containing the name of the product I clicked on
+  //This list item also includes a button 'X' that will allow you to remove the product
+  //from your order.
   orderList.innerHTML += "<li class='orderListItem'>" + this.innerHTML + "<button class='removeFromCart'>X</button></li>"
   
-
+  //I access the button 'X' with class 'removeFromCart' I just created to remove products if needed
   var removeFromCart = document.getElementsByClassName('removeFromCart');
 
+  //For each button 'X' I created, I loop through and create an eventListener for when they are clicked.
+  //The function that the button will perform when clicked, removeCart(), is defined below.
   for (i = 0; i < removeFromCart.length; i++) {
     removeFromCart[i].addEventListener("click", removeCart); 
   }
 
+  //I update my total price to be the currently displayed price + the price of the product I just clicked.
+  //I then assign this value to the innerHTML of my order
   totalPrice = Number(totalPrice) + Number(priceToAdd); 
   orderPrice.innerHTML = Number(totalPrice).toFixed(2);
 
 
 }
 
+//This function is very similar to addCart, except that I have to do a few steps to 
+//get to the 'name' element I need to use to access the correct price.
 function removeCart() {
 
   var priceToSubtract = "0";
   var totalPrice = orderPrice.innerHTML;
-  var listItemToRemove = this.parentElement;
-  var grabItem = listItemToRemove.innerText;
-  var checkArrayValue = grabItem.slice(0,-1);
-  var newFirstIndex = 0;
+  var listItemToRemove = this.parentElement; //This allows me to access the outer list element (current element is button 'X')
+  var grabItem = listItemToRemove.innerText; //This grabs the inner text of the list element, without grabbing anything within element tags.
+  var checkArrayValue = grabItem.slice(0,-1); //It also grabs the 'X' text for my remove button, so I slice this bit off
 
-
+  //Now I loop through all of the inner arrays just as I did with addCart
   for (var i=0;i<products["Regular Flavors"].length;i++) {
     if(products["Regular Flavors"][i]["name"] === checkArrayValue) {
       priceToSubtract = products["Regular Flavors"][i]["price"];
@@ -352,10 +376,11 @@ function removeCart() {
     }
   }
 
-
+  //I update the price by subtracting out the price of the product whose 'X' button I clicked
   totalPrice = Number(totalPrice) - Number(priceToSubtract); 
   orderPrice.innerHTML = Number(totalPrice).toFixed(2);
 
+  //I then remove the entire parent list element of the product whose 'X' button I clicked.
   listItemToRemove.remove();
   
 }
